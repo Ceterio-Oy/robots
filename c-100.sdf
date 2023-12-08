@@ -1,0 +1,175 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="ceterio_c_100">
+    <!-- Base Link -->
+    <link name="base_link">
+      <pose>0 0 0.06 0 0 0</pose> <!-- Center of the robot -->
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.72175 0.52175 0.2</size> <!-- Robot dimensions in meters -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.72175 0.52175 0.11</size> <!-- Same as collision -->
+          </box>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass>30.0</mass> <!-- Placeholder, adjust as needed -->
+        <inertia>
+          <ixx>0.1</ixx> <ixy>0.0</ixy> <ixz>0.0</ixz>
+          <iyy>0.1</iyy> <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Left Wheel -->
+    <link name="left_wheel">
+      <pose>0 0.1743 0.037 0 -1.5708 -1.5708</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.037</radius> <length>0.028</length> <!-- Wheel dimensions in meters -->
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.037</radius> <length>0.028</length> <!-- Same as collision -->
+          </cylinder>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass>1.0</mass> <!-- Placeholder, adjust as needed -->
+        <inertia>
+          <ixx>0.01</ixx> <ixy>0.0</ixy> <ixz>0.0</ixz>
+          <iyy>0.01</iyy> <iyz>0.0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Right Wheel -->
+    <link name="right_wheel">
+      <pose>0 -0.1743 0.037 0 -1.5708 -1.5708</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.037</radius> <length>0.028</length> <!-- Wheel dimensions in meters -->
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.037</radius> <length>0.028</length> <!-- Same as collision -->
+          </cylinder>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass>1.0</mass> <!-- Placeholder, adjust as needed -->
+        <inertia>
+          <ixx>0.01</ixx> <ixy>0.0</ixy> <ixz>0.0</ixz>
+          <iyy>0.01</iyy> <iyz>0.0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Joints for Left and Right Wheels -->
+    <joint name="left_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e16</lower>
+          <upper>1e16</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="right_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e16</lower>
+          <upper>1e16</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- Front LiDAR -->
+    <link name="front_lidar">
+      <pose>0.198 0 0.13 0 0 0</pose> <!-- Front LiDAR position -->
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.04337</radius> <length>0.035</length> <!-- LiDAR dimensions in meters -->
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04337</radius> <length>0.035</length> <!-- Same as collision -->
+          </cylinder>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass>0.5</mass> <!-- Placeholder, adjust as needed -->
+        <inertia>
+          <ixx>0.01</ixx> <ixy>0.0</ixy> <ixz>0.0</ixz>
+          <iyy>0.01</iyy> <iyz>0.0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="front_lidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>front_lidar</child>
+    </joint>
+
+    <!-- Rear LiDAR -->
+    <link name="rear_lidar">
+      <pose>-0.198 0 0.13 0 0 0</pose> <!-- Rear LiDAR position -->
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.04337</radius> <length>0.035</length> <!-- LiDAR dimensions in meters -->
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04337</radius> <length>0.035</length> <!-- Same as collision -->
+          </cylinder>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass>0.5</mass> <!-- Placeholder, adjust as needed -->
+        <inertia>
+          <ixx>0.01</ixx> <ixy>0.0</ixy> <ixz>0.0</ixz>
+          <iyy>0.01</iyy> <iyz>0.0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="rear_lidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>rear_lidar</child>
+    </joint>
+
+  </model>
+</sdf>
